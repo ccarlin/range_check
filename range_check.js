@@ -1,9 +1,11 @@
+var php = require('./php.js');
+var ipaddr = require('ipaddr.js');
+
 (function ()
 {
 	function valid_ip(addr)
-	{
-		var php = require('./php.js');
-        return php.inet_pton(addr) !== false;
+	{	
+       	   return php.inet_pton(addr) !== false;
 	}
 	
     function vaild_ip(addr) //backwords capataibity for typo version
@@ -13,7 +15,6 @@
 
     function ver(addr)
     {
-        var php = require('./php.js');
         if (php.ip2long(addr)) //IPv4
         {
             return 4;
@@ -31,9 +32,7 @@
             if (range.indexOf('/') !== -1)
             {
                 var range_data = range.split('/');
-
-                var ipaddr = require('ipaddr.js');
-
+                
                 var parse_addr = ipaddr.parse(addr);
                 var parse_range = ipaddr.parse(range_data[0]);
 
